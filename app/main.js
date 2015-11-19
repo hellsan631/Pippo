@@ -1,22 +1,11 @@
-var advertisers = [
-  'EMC Corporation',
-  'Black & Decker Corp',
-  'Berkshire Hathaway'
-];
-
-var clients = [
-  'Henderson Alvarez',
-  'Jon Lester',
-  'Troy Tulowitzki'
-];
-
 exports = module.exports = Resol;
 
-function Resol() {
-
+function Resol(advertisers, clients) {
+  this.advertisers  = advertisers;
+  this.clients      = clients;
 }
 
-Resol.prototype.run = function() {
+Resol.prototype.palio = function() {
   var _this = this;
 
   var graph = [];
@@ -24,15 +13,17 @@ Resol.prototype.run = function() {
   var totals = [];
   var index;
 
-  advertisers.forEach(function(ad){
+  _this.advertisers.forEach(function(ad){
     var values = [];
 
-    clients.forEach(function(client){
+    _this.clients.forEach(function(client){
       values.push({ad: ad, client: client, score: _this.combine(ad, client)});
     });
 
     graph.push(values);
   });
+
+  //add step to subtract cost of choosing score from overall score.
 
   var max;
   var maxX;
@@ -67,8 +58,10 @@ Resol.prototype.run = function() {
     }
   }
 
-  console.log(total);
-  console.log(totals);
+  return {
+    total: total,
+    results : totals
+  };
 };
 
 Resol.prototype.combine = function(adver, client) {
