@@ -19,7 +19,56 @@ function Resol() {
 Resol.prototype.run = function() {
   var _this = this;
 
+  var graph = [];
+  var total = 0;
+  var totals = [];
+  var index;
 
+  advertisers.forEach(function(ad){
+    var values = [];
+
+    clients.forEach(function(client){
+      values.push({ad: ad, client: client, score: _this.combine(ad, client)});
+    });
+
+    graph.push(values);
+  });
+
+  var max;
+  var maxX;
+  var maxY;
+
+  while (graph.length > 0) {
+    max = false;
+    maxX = false;
+    maxY = false;
+
+    for (var x = 0; x < graph.length; x++) {
+      for (var y = 0; y < graph[x].length; y++) {
+        if (max && max.score < graph[x][y].score) {
+          max = graph[x][y];
+          maxX = x;
+          maxY = y;
+        } else if (!max) {
+          max = graph[x][y];
+          maxX = x;
+          maxY = y;
+        }
+      }
+    }
+
+    total += max.score;
+    totals.push(max);
+
+    graph.splice(maxX, 1);
+
+    for (var i = 0; i < graph.length; i++) {
+      graph[i].splice(maxY, 1);
+    }
+  }
+
+  console.log(total);
+  console.log(totals);
 };
 
 Resol.prototype.combine = function(adver, client) {
