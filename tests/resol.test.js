@@ -1,4 +1,4 @@
-var Resol = require('../app/main.js');
+var Resol = require('../lib/resol.js');
 
 var advertisers = [
   "EMC Corporation",
@@ -60,6 +60,6 @@ var clients = [
 
 var ctr = new Resol(advertisers, clients);
 
-var result = ctr.palio();
+var result = ctr.pareto();
 
 console.log(result);
