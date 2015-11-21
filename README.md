@@ -23,6 +23,18 @@ This will generate optimized CTR choices and display them in console. If you wan
 $ resol ./path/to/advertisers.txt ./path/to/people.txt -o output.txt
 ```
 
+Or if you want to just test it out without needing the txt files, you can add in the -l option
+
+```shell
+$ resol -l
+```
+
+If you want to see what it can do, just type resol, or resol -h for all the options
+```shell
+$ resol
+$ resol -h
+```
+
 ### Programatic Useage
 
 If you want to use the Resol library locally in an NPM server or in the browser, then just use npm to install it normally
