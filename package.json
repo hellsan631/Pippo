@@ -7,12 +7,16 @@
     "pip": "./bin/pip.js"
   },
   "scripts": {
-    "test": "ava"
+    "test": "ava",
+    "coveralls": "nyc ava && nyc report --reporter=text-lcov | coveralls"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bluebird": "^3.0.5",
     "commander": "^2.9.0"
+  },
+  "devDependencies": {
+    "coveralls": "^2.11.4",
+    "nyc": "^3.2.2"
   }
 }

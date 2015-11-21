@@ -7,3 +7,4 @@ before_script:
   - npm install -g ava
 notifications:
   email: false
+after_success: npm run coveralls
