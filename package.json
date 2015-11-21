@@ -1,10 +1,10 @@
 {
   "name": "pippo",
   "version": "1.0.0",
-  "description": "A CTR optimization tool",
+  "description": "A CTR CLI optimization tool",
   "main": "lib/resol.js",
   "bin": {
-    "pip": "./bin/pip.js"
+    "resol": "./bin/cli.js"
   },
   "scripts": {
     "test": "ava",
@@ -13,7 +13,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "commander": "^2.9.0"
+    "commander": "^2.9.0",
+    "multispinner": "^0.1.8"
   },
   "devDependencies": {
     "coveralls": "^2.11.4",

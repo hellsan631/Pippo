@@ -13,6 +13,20 @@ test.beforeEach(t => {
   t.end();
 });
 
+test('reduce should get rid of the column and row of a given x,y pair', t => {
+
+  var pareto = new Pareto(t.context.data.grid);
+
+  pareto._reduce(0,0);
+
+  t.same(pareto.grid[0][0].score, 7);
+  t.same(pareto.grid[0][1].score, 10);
+  t.same(pareto.grid.length, 2);
+  t.same(pareto.grid[0].length, 2);
+
+  t.end();
+});
+
 test('deepCopy should create a new copy of the original', t => {
   var grid = t.context.data.grid;
 
@@ -60,6 +74,18 @@ test('generateCost weightings should work', t => {
   t.notSame(t.context.data.grid[0][0].cost, -34.5);
   t.notSame(t.context.data.grid[0][1].cost, -29.25);
   t.notSame(t.context.data.grid[0][2].cost, -27.75);
+
+  t.end();
+});
+
+test('run should return a possible solution with a given weight', t => {
+
+  var pareto = new Pareto(t.context.data.grid);
+
+  var results = pareto._run(1);
+
+  t.same(results.score, 32.75);
+  t.same(results.choices.length, 3);
 
   t.end();
 });

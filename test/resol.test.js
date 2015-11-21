@@ -22,6 +22,10 @@ test('Counting concents in names', t => {
   t.same(ctr.countConsonants("Jon Lester"),        6);
   t.same(ctr.countConsonants("Troy Tulowitzki"),   9);
 
+  t.same(ctr.countConsonants("Henderson&Alvarez"), 10);
+  t.same(ctr.countConsonants("Henderson Alvarez."), 10);
+  t.same(ctr.countConsonants("Henderson, Alvarez"), 10);
+
   t.end();
 });
 
