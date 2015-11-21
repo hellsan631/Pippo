@@ -44,7 +44,6 @@ if(!program.args.length && !program.local) {
       reader = new Reader(paths.ad, paths.people);
 
       results = reader.resolve();
-      multispinner.success('result');
 
       if (program.output) {
 
@@ -56,7 +55,10 @@ if(!program.args.length && !program.local) {
 
       } else {
         console.log(util.inspect(results, {depth: null, colors: true}));
+        console.log('\n');
       }
+
+      multispinner.success('result');
 
     } else {
       multispinner.error('result');

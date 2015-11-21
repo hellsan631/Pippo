@@ -1,6 +1,6 @@
 {
   "name": "pippo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A CTR CLI optimization tool",
   "main": "lib/resol.js",
   "bin": {
