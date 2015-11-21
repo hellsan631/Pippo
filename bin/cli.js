@@ -14,16 +14,13 @@ var Multispinner  = require('Multispinner');
 program
   .version('1.0.0')
   .usage('./path/to/advertisers.txt ./path/to/people.txt')
-  .option('-h, --help', 'Shows this help prompt')
   .option('-o, --output [file]', 'Specify a file to output JSON formated results')
   .option('-a, --advertisers [file]', 'Specify a path for advertisers.txt file')
   .option('-p, --people [file]', 'Specify a path for people.txt file')
   .option('-l, --local', 'Uses local files inside this repo')
   .parse(process.argv);
 
-if(program.help) {
-  program.help();
-} else if(!program.args.length && !program.local) {
+if(!program.args.length && !program.local) {
   program.help();
 } else {
 
@@ -31,10 +28,14 @@ if(program.help) {
     'result': 'Running Resol Parteo Optimization'
   };
 
-  var multispinner = new Multispinner(spinners);
+  var multispinner;
   var paths;
   var reader;
   var results;
+
+  setTimeout(function(){
+    multispinner = new Multispinner(spinners);
+  });
 
   setTimeout(function(){
     paths = resolvePaths();
@@ -60,7 +61,7 @@ if(program.help) {
     } else {
       multispinner.error('result');
     }
-  });
+  }, 400);
 }
 
 function resolvePaths() {
