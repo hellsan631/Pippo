@@ -7,27 +7,27 @@
 
 First, install pippo globally:
 
-```
+```shell
 npm install -g pippo
 ```
 
 Next run the pippo command with two local files
 
-```
-resol ./path/to/advertisers.txt ./path/to/people.txt
+```shell
+$ resol ./path/to/advertisers.txt ./path/to/people.txt
 ```
 
 This will generate optimized CTR choices and display them in console. If you want to save the output to a file, then use the -o option in the command line
 
-```
-resol ./path/to/advertisers.txt ./path/to/people.txt -o output.txt
+```shell
+$ resol ./path/to/advertisers.txt ./path/to/people.txt -o output.txt
 ```
 
 ### Programatic Useage
 
 If you want to use the Resol library locally in an NPM server or in the browser, then just use npm to install it normally
 
-```
+```shell
 npm install pippo --save
 ```
 
