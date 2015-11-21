@@ -1,6 +1,10 @@
 import test from 'ava';
 import Resol from '../lib/resol.js';
 
+/**
+ * Main scoring algorithm tests
+ */
+
 test('Counting vowels in names', t => {
   var ctr = new Resol();
 
@@ -14,9 +18,9 @@ test('Counting vowels in names', t => {
 test('Counting concents in names', t => {
   var ctr = new Resol();
 
-  t.same(ctr.countConcents("Henderson Alvarez"), 10);
-  t.same(ctr.countConcents("Jon Lester"),        6);
-  t.same(ctr.countConcents("Troy Tulowitzki"),   9);
+  t.same(ctr.countConsonants("Henderson Alvarez"), 10);
+  t.same(ctr.countConsonants("Jon Lester"),        6);
+  t.same(ctr.countConsonants("Troy Tulowitzki"),   9);
 
   t.end();
 });
@@ -64,6 +68,10 @@ test('Check Resol CTR combined values', t => {
   t.end();
 });
 
+/**
+ * Resol Pareto frontier testing
+ */
+
 test('Resol Pareto with 3x3 grid', t => {
   var advertisers = [
     "EMC Corporation",
@@ -82,6 +90,7 @@ test('Resol Pareto with 3x3 grid', t => {
   var result = ctr.pareto();
 
   t.same(result.score, 30.25);
+  t.same(result.choices.length, advertisers.length);
   t.end();
 });
 
@@ -105,8 +114,13 @@ test('Resol Pareto with 4x4 grid', t => {
   var result = ctr.pareto();
 
   t.same(result.score, 39.25);
+  t.same(result.choices.length, advertisers.length);
   t.end();
 });
+
+/**
+ * Test non-cubic graph sizes
+ */
 
 test('More clients then advertisers shouldn\'t error out', t => {
   var advertisers = [
@@ -129,6 +143,7 @@ test('More clients then advertisers shouldn\'t error out', t => {
   var result = ctr.pareto();
 
   t.same(result.score, 32.5);
+  t.same(result.choices.length, advertisers.length);
   t.end();
 });
 
@@ -153,9 +168,13 @@ test('More advertisers then clients shouldn\'t error out', t => {
   var result = ctr.pareto();
 
   t.same(result.score, 30.25);
+  t.same(result.choices.length, clients.length);
   t.end();
 });
 
+/**
+ * Test larger grids
+ */
 
 test('Resol Pareto with 6x6 grid', t => {
   var advertisers = [
@@ -181,6 +200,7 @@ test('Resol Pareto with 6x6 grid', t => {
   var result = ctr.pareto();
 
   t.same(result.score, 54.25);
+  t.same(result.choices.length, advertisers.length);
   t.end();
 });
 
@@ -248,5 +268,6 @@ test('Resol Pareto with 26x26 grid', t => {
   var result = ctr.pareto();
 
   t.same(result.score, 248.75);
+  t.same(result.choices.length, advertisers.length);
   t.end();
 });
