@@ -17,7 +17,7 @@ program
   .option('-o, --output [file]', 'Specify a file to output JSON formated results')
   .option('-a, --advertisers [file]', 'Specify a path for advertisers.txt file')
   .option('-p, --people [file]', 'Specify a path for people.txt file')
-  .option('-l, --local', 'Uses local files inside this repo')
+  .option('-t, --trial', 'Uses local files inside this repo for test output')
   .parse(process.argv);
 
 if(!program.args.length && !program.local) {
