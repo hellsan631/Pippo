@@ -11,7 +11,7 @@ First, install pippo globally:
 npm install -g pippo
 ```
 
-Next run the pippo command with two local files
+This will install the ```resol``` command into your shell. Next run the pippo command with two local files
 
 ```shell
 $ resol ./path/to/advertisers.txt ./path/to/people.txt
@@ -49,7 +49,7 @@ And include it in your scripts using the require function (requires browserify i
 var Resol = require('pippo');
 
 var ctr     = new Resol(advertiserArray, peopleArray);
-var results = ctr.resolve();
+var results = ctr.pareto();
 
 /* Results:
   {
