@@ -23,10 +23,10 @@ This will generate optimized CTR choices and display them in console. If you wan
 $ resol ./path/to/advertisers.txt ./path/to/people.txt -o output.txt
 ```
 
-Or if you want to just test it out without needing the txt files, you can add in the -l option
+Or if you want to just test it out without needing the txt files, you can add in the -t option
 
 ```shell
-$ resol -l
+$ resol -t
 ```
 
 If you want to see what it can do, just type resol, or resol -h for all the options
