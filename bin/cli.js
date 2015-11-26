@@ -9,7 +9,6 @@ var path          = require('path');
 var Reader        = require('../lib/reader.js');
 var fs            = require('fs');
 var util          = require('util');
-var Multispinner  = require('Multispinner');
 
 program
   .version('1.0.0')
@@ -20,12 +19,12 @@ program
   .option('-t, --trial', 'Uses local files inside this repo for test output')
   .parse(process.argv);
 
-if(!program.args.length && !program.local) {
+if(!program.args.length && !program.trial) {
   program.help();
 } else {
 
   var spinners = {
-    'result': 'Running Resol Parteo Optimization'
+    result: 'Running Resol Parteo Optimization'
   };
 
   var multispinner;
@@ -33,9 +32,7 @@ if(!program.args.length && !program.local) {
   var reader;
   var results;
 
-  setTimeout(function(){
-    multispinner = new Multispinner(spinners);
-  });
+  console.log(spinners.result);
 
   setTimeout(function(){
     paths = resolvePaths();
@@ -58,10 +55,10 @@ if(!program.args.length && !program.local) {
         console.log('\n');
       }
 
-      multispinner.success('result');
+      console.log('Success!');
 
     } else {
-      multispinner.error('result');
+      console.log('Error');
     }
   }, 400);
 }
@@ -70,7 +67,7 @@ function resolvePaths() {
   var adPath;
   var peoplePath;
 
-  if (program.local) {
+  if (program.trial) {
     adPath      = path.resolve(__dirname, '..', 'advertisers.txt');
     peoplePath  = path.resolve(__dirname, '..', 'people.txt');
   } else {
